@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {AuthService} from "../../service/authorize/auth.service";
+import {AuthService} from "../../auth/auth.service";
 import {UserService} from "../../service/userService/user.service";
 
 @Component({
@@ -25,11 +25,6 @@ export class PageAdminComponent {
 
   protected readonly AuthService = AuthService;
 
-  logout(){
-    console.log(this.userService.role)
-    this.authService.logout();
-    console.log(this.userService.role)
 
-  }
 
 }

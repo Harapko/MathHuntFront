@@ -5,18 +5,21 @@
     <p>Log In</p>
   </div>
   <div class="login__line"></div>
-  <form (ngSubmit)="login()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input">
-      <input type="email" name="email" placeholder="Login" [(ngModel)]="credential.email" required>
+      <input type="email" name="email" placeholder="Login" formControlName="email">
       <img src="./assets/register/email.svg">
     </div>
     <div class="input">
-      <input type="password" name="password" placeholder="Password" [(ngModel)]="credential.password" required>
+      <input type="password" name="password" placeholder="Password" formControlName="password">
       <img src="./assets/register/password.svg">
     </div>
+    @if (error.length > 1){
+      <p style="color:red; margin: 5px">{{this.error}}</p>
+    }
     <button type="submit">Log in</button>
   </form>
-  <a routerLink='/register'><p class="login__quick-register">Quick register</p></a>
+<!--  <a routerLink='/register'><p class="login__quick-register">Quick register</p></a>-->
 
 </div>
 
