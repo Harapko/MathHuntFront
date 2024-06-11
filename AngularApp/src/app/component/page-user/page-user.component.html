@@ -8,8 +8,8 @@
 
     <div class="user">
       <img class="user__logo" src="./assets/photo/user-logo.png">
-      <div class="user__nickname">{{ this.user.name }}</div>
-      <button (click)="this.authService.logout()" class="user__logout">LogOut</button>
+      <div class="user__nickname"></div>
+      <button  class="user__logout">LogOut</button>
       <button class="user__edit-profile">Edit Profile</button>
     </div>
 
@@ -37,8 +37,8 @@
         }
       </div>
 
-      <form [formGroup]="addSkillForm" (ngSubmit)="onSubmit()" class="skill-form">
-        <input hidden type="text" [value]="user.email" formControlName="userName">
+      <form  class="skill-form">
+        <input hidden type="text"  formControlName="userName">
         <select formControlName="skillName" class="skill-select">
           <option>---</option>
           @for (skill of skillAllList; track skill){

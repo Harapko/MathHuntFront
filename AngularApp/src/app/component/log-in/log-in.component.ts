@@ -1,12 +1,9 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
-import { debounceTime, Subject } from "rxjs";
-import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {Route, Router, RouterLink} from "@angular/router";
+import {Component, inject} from '@angular/core';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
-import {AuthService} from "../../service/authorize/auth.service";
-import {LoginRequest} from "../../models/login/login-request";
-import {UserService} from "../../service/userService/user.service";
-import {UserResponse} from "../../models/user/user-response";
+import {AuthService} from "../../auth/auth.service";
+import {LoginRequest} from "../../auth/auth.interface";
 
 @Component({
   selector: 'app-log-in',
@@ -20,78 +17,34 @@ import {UserResponse} from "../../models/user/user-response";
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss'
 })
-export class LogInComponent implements OnInit{
-  message: string = '';
-  user!: UserResponse;
+export class LogInComponent{
 
-  @Input() position!: { top: number, left: number };
+  authService = inject(AuthService);
+  error: string = '';
+  router = inject(Router);
 
-  isVisible = true;
-  private userActivity = new Subject<void>();
-  private timerStarted = false;
+  form = new FormGroup({
+    email: new FormControl<string>('', Validators.required),
+    password: new FormControl<string>('', Validators.required)
+ })
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private userService: UserService
-              ) {
-    this.userActivity.pipe(
-      debounceTime(1000)
-    ).subscribe(() => {
-      this.isVisible = false;
-    });
-  }
-
-
-
-  ngOnInit(): void {
-    this.isLoggedIn();
+  onSubmit(){
+    if(this.form.valid){
+      // console.log(this.form.value)
+      this.authService.login(<LoginRequest>this.form.value)
+        .subscribe(res => {
+          this.router.navigate([''])
+          console.log(res);
+        },
+          error => {
+          this.error = "Unauthorized"
+          })
+    }
+    else {
+      this.error = "Form invalid"
+      // console.log("Form invalid")
     }
 
-  credential: LoginRequest = {
-    email: '',
-    password: ''
-  }
-
-  isLoggedIn(){
-    return this.authService.isLoggedIn();
-  }
-
-  login(){
-    this.authService.login(this.credential)
-      .subscribe(() => {
-        this.userService.getUserInfo(this.credential.email)
-        console.log("Login successfully");
-        this.router.navigate(['/home-page'])
-
-      },
-      error => {
-        console.log(error);
-
-      console.log("error", error)
-      })
-
-  }
-
-
-
-
-  @HostListener('mouseenter')
-  @HostListener('mousemove')
-  @HostListener('mousedown')
-  @HostListener('touchstart')
-  resetTimer() {
-    this.isVisible = true;
-    if (this.timerStarted) {
-      this.userActivity.next();
-    } else {
-      this.startTimer();
-    }
-  }
-
-  startTimer() {
-    this.timerStarted = true;
-    this.userActivity.next();
   }
 
 }

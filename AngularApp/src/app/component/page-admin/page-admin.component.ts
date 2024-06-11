@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {AuthService} from "../../service/authorize/auth.service";
-import {UserService} from "../../service/userService/user.service";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-page-admin',
@@ -14,7 +13,7 @@ import {UserService} from "../../service/userService/user.service";
 })
 export class PageAdminComponent {
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService) {
   }
 
   isBlockVisible: boolean = false;
@@ -25,11 +24,6 @@ export class PageAdminComponent {
 
   protected readonly AuthService = AuthService;
 
-  logout(){
-    console.log(this.userService.role)
-    this.authService.logout();
-    console.log(this.userService.role)
 
-  }
 
 }

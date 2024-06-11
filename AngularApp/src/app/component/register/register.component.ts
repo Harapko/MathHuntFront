@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import {Route, Router, RouterLink, RouterOutlet} from "@angular/router";
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import {NgIf} from "@angular/common";
-import {RegisterService} from "../../service/authorize/register.service";
-import {AuthService} from "../../service/authorize/auth.service";
+import {RegisterService} from "../../register/register.service";
 
 @Component({
   selector: 'app-register',
