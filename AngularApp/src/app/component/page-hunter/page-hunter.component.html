@@ -18,28 +18,21 @@
       <div class="your-skills__title">Your Skills</div>
       <div class="your-skills__line"></div>
       <p>Here you can view existing skills and add to your portfolio so that employers can find you and offer the job of your dreams</p>
-      <button class="your-skills__views-skills" (click)="toggleBlock()">View skills</button>
+      <button class="your-skills__views-skills" >View skills</button>
     </div>
   </div>
 
 
       <div class="users">
-        @for (user of userList; track user){
-          @if (user.role == 'user'){
-            <div class="users__title">{{user.name}}</div>
+            <div class="users__title"></div>
             <div class="users__container">
               <div class="users__container__list">
-                @for (skill of user.skillName; track skill){
-                  <div class="users__container__list__skill-name">{{ skill }}</div>
+                  <div class="users__container__list__skill-name"></div>
 
-                }
                 <a routerLink = '/user'>View profile</a>
 
               </div>
             </div>
-          }
-
-        }
       </div>
 
 

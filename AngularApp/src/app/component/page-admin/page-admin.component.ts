@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
-import {UserService} from "../../service/userService/user.service";
 
 @Component({
   selector: 'app-page-admin',
@@ -14,7 +13,7 @@ import {UserService} from "../../service/userService/user.service";
 })
 export class PageAdminComponent {
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService) {
   }
 
   isBlockVisible: boolean = false;

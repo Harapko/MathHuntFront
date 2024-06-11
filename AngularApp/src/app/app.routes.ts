@@ -7,16 +7,17 @@ import {PageHunterComponent} from "./component/page-hunter/page-hunter.component
 import {UserComponent} from "./component/user/user.component";
 import {PageAdminComponent} from "./component/page-admin/page-admin.component";
 import {canActivateAuth} from "./auth/access.guard";
+import {LayoutComponent} from "./component/layout/layout.component";
 
 
 export const routes: Routes = [
   {
-    path: '' , component: HomePageComponent, children: [
+    path: '' , component: LayoutComponent, children: [
 
       {path: 'user-page' , component: PageUserComponent},
+      {path: '' , component: HomePageComponent},
       {path: 'hunter-page' , component: PageHunterComponent},
       {path: 'user' , component: UserComponent},
-      {path: 'home-page' , component: HomePageComponent},
       {path: 'admin-page' , component: PageAdminComponent},
     ],
     canActivate: [canActivateAuth]

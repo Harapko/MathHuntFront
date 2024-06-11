@@ -5,53 +5,74 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center; }
-  .header__nav {
+  align-items: center;
+
+  &__nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-end; }
-    .header__nav__home {
+    align-items: flex-end;
+
+    &__home {
       margin-right: 20px;
       font-size: 40px;
-      font-weight: 700; }
-    .header__nav__profile {
+      font-weight: 700;
+    }
+    &__profile {
       font-size: 30px;
-      font-weight: 300; }
-  .header__logo {
+      font-weight: 300;
+    }
+  }
+
+  &__logo {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; }
-    .header__logo__skill {
+    align-items: center;
+
+    &__skill {
       color: white;
       background: black;
       font-size: 30px;
       font-weight: 500;
       padding: 5px;
-      margin-right: 5px; }
-    .header__logo__hunt {
+      margin-right: 5px;
+    }
+    &__hunt {
       font-size: 30px;
-      font-weight: 500; }
-  .header__log-reg {
+      font-weight: 500;
+    }
+  }
+  &__log-reg {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; }
-    .header__log-reg__log-in {
+    align-items: center;
+
+    &__log-in {
       margin-right: 20px;
       font-size: 30px;
-      font-weight: 500; }
-    .header__log-reg__sign-up {
+      font-weight: 500;
+    }
+    &__sign-up {
       font-size: 30px;
       font-weight: 500;
       color: white;
       background: #08090a;
       border-radius: 20px;
-      padding: 10px; }
+      padding: 10px;
+    }
+  }
+}
+
+
 
 a {
   color: inherit;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
-/*# sourceMappingURL=header.component.css.map */
+
+
+
+

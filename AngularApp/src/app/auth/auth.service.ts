@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {tap} from "rxjs";
 import {LoginRequest, LoginResponse} from "./auth.interface";
 import {CookieService} from "ngx-cookie-service";
