@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Route, Router, RouterLink, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {RegisterService} from "../../register/register.service";
@@ -34,6 +34,7 @@ export class RegisterComponent {
       surname: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       phoneNumber: new FormControl('', Validators.required),
+      englishLevel: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       role: new FormControl('', Validators.required)
     });

@@ -1,10 +1,10 @@
-export interface LoginRequest{
+export interface AuthRequest {
   // userName
   email: string;
   password: string;
 }
 
-export interface LoginResponse{
+export interface AuthResponse {
   tokenType: string;
   accessToken: string;
   expiresIn: number;

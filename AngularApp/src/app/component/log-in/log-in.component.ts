@@ -1,9 +1,9 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {AuthService} from "../../auth/auth.service";
-import {LoginRequest} from "../../auth/auth.interface";
+import {AuthRequest} from "../../auth/auth.interface";
 
 @Component({
   selector: 'app-log-in',
@@ -22,6 +22,7 @@ export class LogInComponent{
   authService = inject(AuthService);
   error: string = '';
   router = inject(Router);
+  isPasswordVisible = signal<boolean>(false);
 
   form = new FormGroup({
     email: new FormControl<string>('', Validators.required),
@@ -31,7 +32,7 @@ export class LogInComponent{
   onSubmit(){
     if(this.form.valid){
       // console.log(this.form.value)
-      this.authService.login(<LoginRequest>this.form.value)
+      this.authService.login(<AuthRequest>this.form.value)
         .subscribe(res => {
           this.router.navigate([''])
           console.log(res);

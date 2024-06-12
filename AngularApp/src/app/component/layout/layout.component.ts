@@ -1,6 +1,7 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {ProfileService} from "../../data/services/profile.service";
+import {Profile} from "../../data/interfaces/Profile";
 
 @Component({
   selector: 'app-layout',
@@ -13,12 +14,13 @@ import {ProfileService} from "../../data/services/profile.service";
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
-
+currentUser?: Profile;
 
   profileService = inject(ProfileService);
   ngOnInit(){
     console.log("ngOnInit")
     this.profileService.getUser().subscribe(res => {
+      this.currentUser = res;
         console.log(res)
       },
       error => {
@@ -29,23 +31,7 @@ export class LayoutComponent {
   }
 
 
-  showLogin = signal(false);
-  loginPosition = signal({ top: 0, left: 0 });
-  isVisible: any;
-  resetTimer = signal<any | null>(null);
 
-  toggleLogin(event: MouseEvent) {
-    this.showLogin.set(!this.showLogin());
-    if (this.showLogin()) {
-      const loginElement = document.querySelector('.login') as HTMLElement;
-      const loginRect = loginElement.getBoundingClientRect();
-      const offsetLeft = loginElement.offsetLeft;
-      this.loginPosition.set({
-        top: loginRect.bottom + 30,
-        left: loginRect.left - 222
-      });
-    }
-  }
 
 
 }

@@ -1,5 +1,5 @@
 export interface Profile{
-  // id: string,
+  id: string,
   name: string,
   surname: string,
   email: string,
@@ -7,7 +7,18 @@ export interface Profile{
   englishLevel: string,
   descriptionSkill: string,
   role: string,
+  photoPath: string,
   skillName: string[],
-  // companies: any[],
-  // photoUsers: string[]
+  companyList: Company[],
+}
+
+export interface Company {
+  id: string,
+  tradeName: string,
+  dataStart: string,
+  dataEnd: string,
+  positionUser: string,
+  descriptionUsersWork: string,
+  appUserId: string,
+  appUser: null
 }

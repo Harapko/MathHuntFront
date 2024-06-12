@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 
@@ -12,9 +12,8 @@ import {AuthService} from "../../auth/auth.service";
   styleUrl: './page-admin.component.scss'
 })
 export class PageAdminComponent {
+  authService = inject(AuthService);
 
-  constructor(private authService: AuthService) {
-  }
 
   isBlockVisible: boolean = false;
 

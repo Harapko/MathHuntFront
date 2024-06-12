@@ -8,18 +8,19 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input">
       <input type="email" name="email" placeholder="Login" formControlName="email">
-      <img src="./assets/register/email.svg">
+      <img src="./assets/register/email.svg" alt="">
     </div>
     <div class="input">
-      <input type="password" name="password" placeholder="Password" formControlName="password">
-      <img src="./assets/register/password.svg">
+
+      <input [type]="isPasswordVisible() ? 'text' : 'password'" name="password" placeholder="Password" formControlName="password">
+      <img style="cursor: pointer" (click)="isPasswordVisible.set(!isPasswordVisible())" src="./assets/register/password.svg" alt="">
     </div>
     @if (error.length > 1){
       <p style="color:red; margin: 5px">{{this.error}}</p>
     }
     <button type="submit">Log in</button>
   </form>
-<!--  <a routerLink='/register'><p class="login__quick-register">Quick register</p></a>-->
+  <a routerLink='/register'><p class="login__quick-register">Register</p></a>
 
 </div>
 

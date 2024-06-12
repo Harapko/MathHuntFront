@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 @Component({
@@ -11,7 +11,8 @@ import {AuthService} from "../../auth/auth.service";
   styleUrl: './page-hunter.component.scss'
 })
 export class PageHunterComponent implements OnInit{
-  constructor(public authService: AuthService) {
+  authService = inject(AuthService);
+  constructor() {
   }
 
   ngOnInit(): void {

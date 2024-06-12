@@ -1,7 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {Component, inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 
 @Component({
@@ -16,14 +14,15 @@ import {AuthService} from "../../auth/auth.service";
 })
 
 export class PageUserComponent implements OnInit {
+  authService = inject(AuthService);
+
   skillNames: string[] = [];
   skillAllList: string[] = [];
   addSkillForm!: FormGroup;
   isLoading: boolean = false;
   message: string = '';
 
-  constructor(private http: HttpClient, public authService: AuthService) {
-  }
+
 
   ngOnInit(): void {
 
