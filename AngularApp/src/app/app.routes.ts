@@ -15,7 +15,7 @@ export const routes: Routes = [
     path: '' , component: LayoutComponent, children: [
 
       {path: 'user-page' , component: PageUserComponent},
-      {path: '' , component: HomePageComponent},
+      {path: 'home-page' , component: HomePageComponent},
       {path: 'hunter-page' , component: PageHunterComponent},
       {path: 'user' , component: UserComponent},
       {path: 'admin-page' , component: PageAdminComponent},

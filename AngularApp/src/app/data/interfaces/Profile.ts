@@ -7,9 +7,7 @@ export interface Profile{
   englishLevel: string,
   descriptionSkill: string,
   role: string,
-  photoPath: string,
-  skillName: string[],
-  companyList: Company[],
+  photoPath: string
 }
 
 export interface Company {

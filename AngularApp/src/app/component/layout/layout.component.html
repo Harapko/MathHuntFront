@@ -10,11 +10,11 @@
     <div class="header__logo__hunt">HUNT</div>
   </div></a>
   <div class="header__log-reg">
-    @if (currentUser?.role === "admin"){
+    @if (this.profileService.currentUser?.role === "admin"){
           <a routerLink = '/admin-page'><div class="header__nav__profile">Admin</div></a>
-    } @else if (currentUser?.role === "hunter"){
+    } @else if (this.profileService.currentUser?.role === "hunter"){
           <a routerLink = '/hunter-page'><div class="header__log-reg__sign-up">Hunter</div></a>
-    } @else if (currentUser?.role === "user"){
+    } @else if (this.profileService.currentUser?.role === "user"){
           <a routerLink = '/user-page'><div class="header__nav__profile">User</div></a>
     } @else {
       <a routerLink = '/login'><div class="header__log-reg__log-in">Log In</div></a>
