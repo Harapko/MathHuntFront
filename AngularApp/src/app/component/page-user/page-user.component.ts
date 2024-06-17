@@ -1,12 +1,13 @@
-import {AfterContentInit, AfterViewInit, Component, inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Component, inject, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
 import {ProfileService} from "../../data/services/profile.service";
-import {Skill, UserSkill} from "../../data/interfaces/Skill";
+import {DeleteSkillToUser, Skill, UserSkill} from "../../data/interfaces/Skill";
 import {SkillService} from "../../data/services/skill.service";
-import {delay, map, Observable, of, switchMap, tap} from "rxjs";
+import {Observable, of, switchMap, tap} from "rxjs";
 import {AsyncPipe} from "@angular/common";
 import {Profile} from "../../data/interfaces/Profile";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-page-user',
@@ -14,21 +15,22 @@ import {Profile} from "../../data/interfaces/Profile";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    AsyncPipe
+    AsyncPipe,
+    RouterLink
   ],
   templateUrl: './page-user.component.html',
   styleUrl: './page-user.component.scss'
 })
 
 export class PageUserComponent implements OnInit {
+  private skillService = inject(SkillService);
+  private profileService = inject(ProfileService);
+  private fb = inject(FormBuilder)
   public authService = inject(AuthService);
-  public skillService = inject(SkillService);
-  public profileService = inject(ProfileService);
 
   public skillList$?: Observable<Skill[]>;
-  public userSkillList?: UserSkill[];
+  public userSkillList: UserSkill[] = [];
   public currentUser?: Profile;
-  public userRefresh?: Observable<Profile>;
   public addSkillForm!: FormGroup;
 
   proficiencyLevel: string[] = [
@@ -39,42 +41,9 @@ export class PageUserComponent implements OnInit {
   ]
 
 
-  getUser() {
 
-    if (this.profileService.currentUser == undefined) {
-      return this.profileService.getUser().pipe(
-        tap(res => {
-          this.currentUser = res;
-          console.log("firs", this.currentUser);
-        })
-      );
-    } else {
-      this.currentUser = this.profileService.currentUser;
-      console.log("sec");
-      return of(this.currentUser);
-    }
-  }
-
-constructor() {
-
-  }
-
-  getUserAndLoadSkills() {
-    this.getUser().pipe(
-      switchMap(user => {
-        return this.skillList(user.name).pipe(
-          tap(() => this.addForm(user.name))
-        );
-      })
-    ).subscribe();
-  }
   ngOnInit(): void {
-
     this.getUserAndLoadSkills();
-
-
-
-
     this.skillList$ = this.skillService.getSkill();
 
 
@@ -121,38 +90,73 @@ constructor() {
 
   }
 
+  getUser() {
+
+    if (this.profileService.currentUser == undefined) {
+      return this.profileService.getUser().pipe(
+        tap(res => {
+          this.currentUser = res;
+          console.log("firs", this.currentUser);
+        })
+      );
+    } else {
+      this.currentUser = this.profileService.currentUser;
+      console.log("sec");
+      return of(this.currentUser);
+    }
+  }
+
   skillList(userName: string) {
     return this.skillService.getUserSkill(userName).pipe(
       tap(res => {
-        console.log("dosmth", this.currentUser);
         this.userSkillList = res;
       })
     )
   }
 
-
-
-
-  public addForm(userName: string) {
-    this.addSkillForm = new FormGroup({
-      userName: new FormControl(`${userName}`, Validators.required),
-      skillName: new FormControl('', Validators.required),
-      proficiencyLevel: new FormControl('', Validators.required)
-    });
+  public formBuild(userName: string){
+    this.addSkillForm = this.fb.group({
+      userName: [`${userName}`, Validators.required],
+      skillName: ['', Validators.required],
+      proficiencyLevel: ['', Validators.required],
+    })
   }
 
+  getUserAndLoadSkills() {
+    this.getUser().pipe(
+      switchMap(user => {
+        return this.skillList(user.name).pipe(
+          tap(() => this.formBuild(user.name))
+        );
+      })
+    ).subscribe();
+  }
+
+
+
+
   onSubmit(){
-    return this.skillService.addSkillToUser(this.addSkillForm.value)
+     this.skillService.addSkillToUser(this.addSkillForm.value)
       .subscribe(res => {
-        console.log(res);
+        console.log("res");
+        console.log(this.addSkillForm.controls['skillName'].value);
+          this.userSkillList = [...this.userSkillList, this.addSkillForm.value];
       },
         error => {
         console.log(error)
         })
   }
 
-
-
+  deleteUserSkill(skillName: string){
+    this.skillService.deleteSkillToUser(this.currentUser?.id, skillName)
+      .subscribe(res => {
+        console.log(res)
+          this.userSkillList = this.userSkillList.filter(skill => skill.skillName !== skillName);
+      },
+        error => {
+        console.log(error)
+        })
+  }
 
 
 

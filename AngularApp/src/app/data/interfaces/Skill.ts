@@ -1,9 +1,15 @@
 export interface Skill{
-  id: string,
+  id: string
   skillName: string
 }
 
 export interface UserSkill{
-  skillName: string,
+  id: string
+  skillName: string
   proficiencyLevel: string
+}
+
+export interface DeleteSkillToUser{
+  userId: string
+  skillId: string
 }

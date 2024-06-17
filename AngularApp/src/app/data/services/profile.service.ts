@@ -1,20 +1,24 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Profile} from "../interfaces/Profile";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  httpClient = inject(HttpClient)
-  baseUrl = "http://localhost:5117/"
-  currentUser?: Profile;
+  private httpClient = inject(HttpClient)
+  private baseUrl = "http://localhost:5117/"
+  public currentUser?: Profile;
 
   constructor() { }
 
   getUser() {
-    return this.httpClient.get<Profile>(`http://localhost:5117/getCurrentUser`)
+    return this.httpClient.get<Profile>('http://localhost:5117/getCurrentUser')
+  }
+
+  getUserBuId(id: string | null) : Observable<Profile>{
+    return this.httpClient.get<Profile>(`${this.baseUrl}getUserById/${id}`)
   }
 
 

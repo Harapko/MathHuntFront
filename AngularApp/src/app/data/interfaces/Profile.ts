@@ -10,13 +10,4 @@ export interface Profile{
   photoPath: string
 }
 
-export interface Company {
-  id: string,
-  tradeName: string,
-  dataStart: string,
-  dataEnd: string,
-  positionUser: string,
-  descriptionUsersWork: string,
-  appUserId: string,
-  appUser: null
-}
+
