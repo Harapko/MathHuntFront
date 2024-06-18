@@ -17,11 +17,35 @@
 
   <div class="section">
     <h2>List of previous companies</h2>
+    <button (click)="isAddCompany.set(!isAddCompany())">+ add company</button>
     <ul class="companies-list">
-      <li>
-        <strong>Компания:</strong> ООО "Пример" <br>
-        <strong>Должность:</strong> Менеджер проекта <br>
-        <strong>Годы работы:</strong> 2018-2020
+      <li class="company_form">
+      @if (isAddCompany()){
+
+        <form class="company_form" [formGroup]="companyFG">
+          <label id="tradeName">Trade Name </label>
+          <input name="tradeName" formControlName="tradeName" placeholder="Trade Name">
+
+          <label id="dataStart">Data Start </label>
+          <input type="date" name="dataStart" formControlName="dataStart" placeholder="Data Start">
+
+          <label id="dataEnd">Data End </label>
+          <input type="date" name="dataEnd" formControlName="dataEnd" placeholder="Data End">
+
+          <label id="positionUser">Position </label>
+          <input name="positionUser" formControlName="positionUser" placeholder="Position">
+
+          <label id="descriptionUsersWork">Descript your work </label>
+          <textarea id="descript_area" name="descriptionUsersWork" formControlName="descriptionUsersWork" placeholder="Descript your work"></textarea>
+
+          <label id="link">Company link </label>
+          <input type="url" name="link" formControlName="link" placeholder="Company link">
+
+          <input name="appUserId" formControlName="appUserId">
+          <button type="submit">Add Company</button>
+        </form>
+      }
+
       </li>
     </ul>
   </div>

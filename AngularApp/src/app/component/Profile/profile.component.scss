@@ -64,6 +64,17 @@ h2 {
   padding: 0;
   margin: 0;
 }
+
+.company_form{
+  display: flex;
+  flex-direction: column;
+}
+
+#descript_area{
+  max-width: 862px;
+  min-width: 862px;
+  min-height: 46px;
+}
 .skills-list li, .companies-list li {
   background: rgba(247, 247, 247, 0.9);
   border: 1px solid #ddd;
