@@ -5,6 +5,7 @@ export interface Profile{
   email: string,
   phoneNumber: string,
   englishLevel: string,
+  gitHubLink: string
   descriptionSkill: string,
   role: string,
   photoPath: string

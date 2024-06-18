@@ -2,13 +2,15 @@ import {Component, inject, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {ProfileService} from "../../data/services/profile.service";
 import {async} from "rxjs";
+import {AsyncPipe} from "@angular/common";
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    AsyncPipe
   ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
@@ -21,14 +23,7 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log("ngOnInit");
-     this.profileService.getUser().subscribe(res => {
-        this.profileService.currentUser = res;
-        console.log(res);
-      },
-      error => {
-        console.log(error);
-      });
-    console.log("ngOnInit2");
+     this.profileService.currentUser$ = this.profileService.getUser();
+     console.log(this.profileService.currentUser$)
   }
 }

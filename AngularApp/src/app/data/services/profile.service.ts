@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 export class ProfileService {
   private httpClient = inject(HttpClient)
   private baseUrl = "http://localhost:5117/"
-  public currentUser?: Profile;
+  public currentUser$!: Observable<Profile>;
 
   constructor() { }
 

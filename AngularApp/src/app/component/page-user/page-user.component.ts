@@ -1,12 +1,11 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
 import {ProfileService} from "../../data/services/profile.service";
-import {DeleteSkillToUser, Skill, UserSkill} from "../../data/interfaces/Skill";
+import {Skill, UserSkill} from "../../data/interfaces/Skill";
 import {SkillService} from "../../data/services/skill.service";
-import {Observable, of, switchMap, tap} from "rxjs";
+import {Observable, switchMap} from "rxjs";
 import {AsyncPipe} from "@angular/common";
-import {Profile} from "../../data/interfaces/Profile";
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -24,14 +23,15 @@ import {RouterLink} from "@angular/router";
 
 export class PageUserComponent implements OnInit {
   private skillService = inject(SkillService);
-  private profileService = inject(ProfileService);
   private fb = inject(FormBuilder)
   public authService = inject(AuthService);
+  public profileService = inject(ProfileService);
 
   public skillList$?: Observable<Skill[]>;
-  public userSkillList: UserSkill[] = [];
-  public currentUser?: Profile;
+  public userSkillList$?: Observable<UserSkill[]> | null;
   public addSkillForm!: FormGroup;
+  public isBlockVisible: boolean = false;
+
 
   proficiencyLevel: string[] = [
     "Novice",
@@ -43,17 +43,13 @@ export class PageUserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getUserAndLoadSkills();
     this.skillList$ = this.skillService.getSkill();
-
-
-
+    this.loadUserSkill();
+    this.formBuild();
 
 
     const trigger = document.getElementById("trigger");
     const list = document.getElementById("list");
-    const option1 = document.getElementById("option1") as HTMLInputElement;
-    const option2 = document.getElementById("option2") as HTMLInputElement;
 
     if (trigger) {
       trigger.addEventListener("click", () => {
@@ -63,95 +59,38 @@ export class PageUserComponent implements OnInit {
       });
     }
 
-    if (option1) {
-      option1.addEventListener("change", () => {
-        if (option1.checked) {
-          console.log("Опція 1 обрана");
-          // Додайте код, який потрібно виконати, коли опція 1 обрана
-        } else {
-          console.log("Опція 1 скасована");
-          // Додайте код, який потрібно виконати, коли опція 1 скасована
-        }
-      });
-    }
-
-    if (option2) {
-      option2.addEventListener("change", () => {
-        if (option2.checked) {
-          console.log("Опція 2 обрана");
-          // Додайте код, який потрібно виконати, коли опція 2 обрана
-        } else {
-          console.log("Опція 2 скасована");
-          // Додайте код, який потрібно виконати, коли опція 2 скасована
-        }
-      });
-    }
-
-
   }
 
-  getUser() {
-
-    if (this.profileService.currentUser == undefined) {
-      return this.profileService.getUser().pipe(
-        tap(res => {
-          this.currentUser = res;
-          console.log("firs", this.currentUser);
-        })
-      );
-    } else {
-      this.currentUser = this.profileService.currentUser;
-      console.log("sec");
-      return of(this.currentUser);
-    }
-  }
-
-  skillList(userName: string) {
-    return this.skillService.getUserSkill(userName).pipe(
-      tap(res => {
-        this.userSkillList = res;
-      })
-    )
-  }
-
-  public formBuild(userName: string){
+  public formBuild(){
     this.addSkillForm = this.fb.group({
-      userName: [`${userName}`, Validators.required],
+      userName: ['', Validators.required],
       skillName: ['', Validators.required],
       proficiencyLevel: ['', Validators.required],
     })
-  }
 
-  getUserAndLoadSkills() {
-    this.getUser().pipe(
-      switchMap(user => {
-        return this.skillList(user.name).pipe(
-          tap(() => this.formBuild(user.name))
-        );
-      })
-    ).subscribe();
+    this.profileService.currentUser$.subscribe(res => {
+      this.addSkillForm.patchValue({userName: res.name})
+    })
   }
-
 
 
 
   onSubmit(){
      this.skillService.addSkillToUser(this.addSkillForm.value)
       .subscribe(res => {
-        console.log("res");
-        console.log(this.addSkillForm.controls['skillName'].value);
-          this.userSkillList = [...this.userSkillList, this.addSkillForm.value];
+        console.log("res", res);
+          this.loadUserSkill();
       },
         error => {
         console.log(error)
         })
   }
 
-  deleteUserSkill(skillName: string){
-    this.skillService.deleteSkillToUser(this.currentUser?.id, skillName)
+  deleteUserSkill(userId: string, skillName: string){
+    this.skillService.deleteSkillToUser(userId, skillName)
       .subscribe(res => {
         console.log(res)
-          this.userSkillList = this.userSkillList.filter(skill => skill.skillName !== skillName);
+          this.loadUserSkill();
       },
         error => {
         console.log(error)
@@ -159,10 +98,14 @@ export class PageUserComponent implements OnInit {
   }
 
 
+  public loadUserSkill(){
+    this.userSkillList$ = null;
+    this.userSkillList$ = this.profileService.currentUser$.pipe(
+      switchMap((res) => this.skillService.getUserSkill(res.name))
+    )
+  }
 
-  isBlockVisible: boolean = false;
-
-  toggleBlock() {
+  public toggleBlock() {
     this.isBlockVisible = !this.isBlockVisible;
   }
 

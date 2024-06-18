@@ -23,6 +23,9 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
       if(error.status === 403){
         return refreshAndProceed(authService, req, next);
       }
+      if(error.status === 500){
+        return refreshAndProceed(authService, req, next);
+      }
       return throwError(error);
     })
   )

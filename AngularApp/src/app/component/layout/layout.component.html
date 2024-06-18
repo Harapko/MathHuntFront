@@ -10,16 +10,19 @@
     <div class="header__logo__hunt">HUNT</div>
   </div></a>
   <div class="header__log-reg">
-    @if (this.profileService.currentUser?.role === "admin"){
-          <a routerLink = '/admin-page'><div class="header__nav__profile">Admin</div></a>
-    } @else if (this.profileService.currentUser?.role === "hunter"){
-          <a routerLink = '/hunter-page'><div class="header__log-reg__sign-up">Hunter</div></a>
-    } @else if (this.profileService.currentUser?.role === "user"){
-          <a routerLink = '/user-page'><div class="header__nav__profile">User</div></a>
-    } @else {
-      <a routerLink = '/login'><div class="header__log-reg__log-in">Log In</div></a>
-      <a routerLink = '/register'><div class="header__log-reg__sign-up">Sign Up</div></a>
+    @if (this.profileService.currentUser$ | async; as user){
+      @if (user.role === "admin"){
+        <a routerLink = '/admin-page'><div class="header__nav__profile">Admin</div></a>
+      } @else if (user.role === "hunter"){
+        <a routerLink = '/hunter-page'><div class="header__log-reg__sign-up">Hunter</div></a>
+      } @else if (user.role === "user"){
+        <a routerLink = '/user-page'><div class="header__nav__profile">User</div></a>
+      } @else {
+        <a routerLink = '/login'><div class="header__log-reg__log-in">Log In</div></a>
+        <a routerLink = '/register'><div class="header__log-reg__sign-up">Sign Up</div></a>
+      }
     }
+
   </div>
 </header>
 
