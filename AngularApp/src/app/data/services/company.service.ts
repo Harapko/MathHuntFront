@@ -19,4 +19,16 @@ export class CompanyService {
   addUserCompany(companyData: FormBuilder) : Observable<string>{
     return this.httpClient.post<string>(`${this.baseUrl}createCompany`, companyData)
   }
+
+  addSkillToCompany(data: FormBuilder) : Observable<string>{
+    return this.httpClient.post<string>(`${this.baseUrl}addSkillToCompany`, data);
+  }
+
+  deleteCompany(companyId: string) : Observable<string>{
+    return this.httpClient.delete<string>(`${this.baseUrl}deleteCompany/${companyId}`)
+  }
+
+  deleteSkillCompany(companyId: string, skillName: string) : Observable<string>{
+    return this.httpClient.delete<string>(`${this.baseUrl}deleteCompanySkill/${companyId}/${skillName}`)
+  }
 }

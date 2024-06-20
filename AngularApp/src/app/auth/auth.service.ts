@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import {catchError, tap, throwError} from "rxjs";
+import {catchError, Observable, tap, throwError} from "rxjs";
 import {AuthRequest, AuthResponse} from "./auth.interface";
 import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
@@ -34,13 +34,9 @@ export class AuthService {
    )
   }
 
-  refreshAuthToken() {
-    return this.httpClient.post<AuthResponse>(
-      `${this.baseUsr}refresh`,
-      {
-        refresh_token: this.refreshToken
-      }
-    ).pipe(
+  refreshAuthToken() : Observable<AuthResponse> {
+    return this.httpClient.post<AuthResponse>(`${this.baseUsr}refresh`, {refreshToken: this.refreshToken})
+      .pipe(
       tap(val => this.saveTokens(val)),
       catchError(err => {
         this.logout();
@@ -48,6 +44,7 @@ export class AuthService {
       })
     )
   }
+
 
   logout(){
     this.cookieService.deleteAll();

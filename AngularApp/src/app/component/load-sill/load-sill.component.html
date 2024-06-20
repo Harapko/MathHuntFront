@@ -1,0 +1,5 @@
+@if (skillList$ | async; as skillList){
+  @for (skill of skillList; track skill){
+    {{skill.skillName}}
+  }
+}

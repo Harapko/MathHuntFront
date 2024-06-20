@@ -18,7 +18,7 @@ body {
   border-radius: 15px;
   padding: 30px 50px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  margin: 20px;
+  margin: 0 auto;
 }
 h1, h2 {
   text-align: center;
@@ -37,6 +37,8 @@ h2 {
   font-size: 1.75em;
 }
 .section {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 40px;
 }
 .section h2 {
@@ -59,10 +61,20 @@ h2 {
 .info-item a:hover {
   text-decoration: underline;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 .skills-list, .companies-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  li{
+    display: flex;
+    text-decoration: none;
+    justify-content: space-between;
+  }
 }
 
 .company_form{
@@ -70,9 +82,34 @@ h2 {
   flex-direction: column;
 }
 
-#descript_area{
+.company_list{
+  display: flex;
+  justify-content: space-between;
+
+}
+.company_info{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 15px;
+  & p {
+    margin-bottom: 10px;
+  }
+  & a {
+    margin-bottom: 10px;
+
+  }
+}
+
+.descript_area_company{
   max-width: 862px;
   min-width: 862px;
+  min-height: 46px;
+}
+
+.descript_area_user{
+  max-width: 894px;
+  min-width: 894px;
   min-height: 46px;
 }
 .skills-list li, .companies-list li {
@@ -89,8 +126,7 @@ h2 {
   background: rgba(234, 234, 234, 0.9);
   transform: translateY(-3px);
 }
-.skills-list li::before, .companies-list li::before {
-  content: '•';
+.skills-list li::after, .companies-list li::after {
   color: #333;
   font-weight: bold;
   display: inline-block;
