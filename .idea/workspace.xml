@@ -4,21 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4655f24-ad4c-465d-ae72-00f1e6641f18" name="Changes" comment="update userPage to rxJS&#10;add info to profile">
-      <change afterPath="$PROJECT_DIR$/AngularApp/src/assets/photo/edit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AngularApp/src/assets/photo/trash.svg" afterDir="false" />
+    <list default="true" id="d4655f24-ad4c-465d-ae72-00f1e6641f18" name="Changes" comment="done userProfile&#10;add user to hunterPage">
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/load-skill/load-skill.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/interface/authResponse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/app/user/interface/deleteSkillToUser.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/app/user/interface/skill.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/app/user/interface/userBySkill.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/app/user/interface/userSkill.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularApp/src/assets/photo/search.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/company.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/data/services/company.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/profile.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/data/services/profile.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularApp/src/assets/photo/lox-na-pufiky.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/auth/access.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/core/access.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/auth/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/interface/authRequest.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/auth/auth.interseptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/core/auth.interseptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/auth/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/core/auth.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/core/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/profile.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/profile.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/profile.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/profile.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/Profile/user.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/Profile/user.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/home-page/home-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/home-page/home-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/home-page/home-page.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/home-page/home-page.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/home-page/home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/home-page/home-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/home-page/home-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/home-page/home-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/home-page/home-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/home-page/home-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/home-page/home-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/home-page/home-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/layout/layout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/layout/layout.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/layout/layout.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/layout/layout.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/layout/layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/layout/layout.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/layout/layout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/layout/layout.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/layout/layout.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/layout/layout.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/layout/layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/layout/layout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/load-sill/load-sill.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/load-sill/load-sill.component.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/load-sill/load-sill.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/load-skill/load-skill.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/load-sill/load-sill.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/load-skill/load-skill.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/load-sill/load-sill.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/load-skill/load-skill.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/load-sill/load-sill.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/Shared/UI/load-skill/load-skill.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/log-in/log-in.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/log-in/log-in.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/log-in/log-in.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/log-in/log-in.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/log-in/log-in.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/log-in/log-in.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/log-in/log-in.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/log-in/log-in.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/log-in/log-in.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/log-in/log-in.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/log-in/log-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/log-in/log-in.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-admin/page-admin.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-admin/page-admin.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-admin/page-admin.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-admin/page-admin.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-admin/page-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-admin/page-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-admin/page-admin.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-admin/page-admin.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-admin/page-admin.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-admin/page-admin.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-admin/page-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-admin/page-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-hunter/page-hunter.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-hunter/page-hunter.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-hunter/page-hunter.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-hunter/page-hunter.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-hunter/page-hunter.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-hunter/page-hunter.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-hunter/page-hunter.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-user/page-user.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-user/page-user.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-user/page-user.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-user/page-user.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-user/page-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-user/page-user.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-user/page-user.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-user/page-user.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-user/page-user.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-user/page-user.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/page-user/page-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/UI/page-user/page-user.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/register/register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/register/register.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/register/register.component.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/register/register.component.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/register/register.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/register/register.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/register/register.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/register/register.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/component/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/UI/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/interfaces/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/interface/company.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/interfaces/Profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/interface/profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/interfaces/Skill.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/company.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/core/company.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/company.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/core/company.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/profile.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/core/profile.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/profile.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/core/profile.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/skill.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/core/skill.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/data/services/skill.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/user/core/skill.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/register/register.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/interface/register.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/register/register.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/core/register.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularApp/src/app/register/register.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularApp/src/app/auth/core/register.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +147,11 @@
       <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app\register" />
-      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app" />
-      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\FrontEnd\AngularApp\src\app" />
+      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app\Shared\UI" />
+      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app\user\interface" />
+      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app\user\core" />
+      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app\user\UI" />
+      <recent name="C:\Users\bakud\WebstormProjects\FrontHuntSkill\AngularApp\src\app\user" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.localhost:4200">
@@ -141,7 +212,7 @@
       <workItem from="1717662357897" duration="22781000" />
       <workItem from="1718130015767" duration="96000" />
       <workItem from="1718130121983" duration="9772000" />
-      <workItem from="1718620503569" duration="61887000" />
+      <workItem from="1718620503569" duration="109105000" />
     </task>
     <task id="LOCAL-00001" summary="add new auth">
       <option name="closed" value="true" />
@@ -167,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718720133280</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="done userProfile&#10;add user to hunterPage">
+      <option name="closed" value="true" />
+      <created>1718882594751</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718882594751</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +256,7 @@
     <MESSAGE value="add new auth" />
     <MESSAGE value="update user skill page&#10;add user profile page" />
     <MESSAGE value="update userPage to rxJS&#10;add info to profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="update userPage to rxJS&#10;add info to profile" />
+    <MESSAGE value="done userProfile&#10;add user to hunterPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="done userProfile&#10;add user to hunterPage" />
   </component>
 </project>

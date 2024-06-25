@@ -1,0 +1,51 @@
+<div class="wrapper">
+@if (this.profileService.currentUser$ | async; as profile){
+
+
+  <div class="main">
+    <div class="title">
+      <p>Hunter</p>
+      <div class="title__line"></div>
+    </div>
+
+    <div class="user">
+      <img class="user__logo" src="./assets/photo/user-logo.png" alt="">
+      <div class="user__nickname">{{profile.name}}</div>
+      <button (click)="authService.logout()" class="user__logout">LogOut</button>
+
+      <button [routerLink]="['/profile', profile.id]" class="user__edit-profile">Edit Profile</button>
+    </div>
+
+
+  </div>
+
+
+      <div class="users">
+            <div class="users__title"></div>
+            <div class="users__container">
+              @if (userList$ | async; as userList){
+                @for (user of userList; track user){
+                  @if (user.role == "user"){
+                  <div class="users__container__list">
+                    {{user.name}}
+
+                      <div  class="users__container__list__skill-name">
+                        <app-load-skill [userName]="user.name"></app-load-skill>
+                      </div>
+                    <a [routerLink] = "['/profile', user.id]">View profile</a>
+                  </div>
+                  }
+                }
+              }
+            </div>
+      </div>
+
+
+}
+</div>
+
+
+
+
+
+

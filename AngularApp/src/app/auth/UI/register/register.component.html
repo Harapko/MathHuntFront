@@ -1,0 +1,49 @@
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="register">
+  <div class="register__box">
+    <div class="register__box__title">
+      <div class="register__box__title__singUp"><b>Sign Up</b></div>
+    </div>
+    <div class="register__box__line"></div>
+    <div class="input">
+      <img src="../../../../assets/register/user.svg" alt="">
+      <input type="text" id="name" placeholder="Name" formControlName="name" required>
+    </div>
+    <div class="input">
+      <img src="../../../../assets/register/surname.svg" alt="">
+      <input type="text" id="surname" placeholder="Surname" formControlName="surname" required>
+    </div>
+    <div class="input">
+      <img src="../../../../assets/register/email.svg" alt="">
+      <input type="email" id="email" placeholder="Email" formControlName="email" required>
+    </div>
+    <div class="input">
+      <img src="../../../../assets/register/telephone.svg" alt="">
+      <input type="text" id="phoneNumber" placeholder="Phone Number" formControlName="phoneNumber" required>
+    </div>
+    <div class="input">
+      <img src="../../../../assets/register/telephone.svg" alt="">
+      <input type="text" id="englishLevel" placeholder="English Level" formControlName="englishLevel" required>
+    </div>
+    <div class="input">
+      <img src="../../../../assets/register/password.svg" alt="">
+      <input type="password" id="password" placeholder="Password" formControlName="password" required>
+    </div>
+
+    <div class="input">
+      <select id="role" formControlName="role" required>
+        <option value="" disabled selected>Select your role</option>
+        <option value="user">User</option>
+        <option value="hunter">Hunter</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+
+
+      <button type="submit" class="register__box__submit-button">Sign Up</button>
+    <a routerLink="/login">Login</a>
+  </div>
+
+</div>
+</form>

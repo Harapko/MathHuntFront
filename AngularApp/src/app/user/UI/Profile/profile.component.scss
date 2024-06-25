@@ -1,0 +1,149 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('/AngularApp/src/assets/photo/background.svg') no-repeat center center fixed;
+  background-size: cover;
+}
+.profile-container {
+  width: 80%;
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+}
+h1, h2 {
+  text-align: center;
+  color: #222;
+  margin: 0;
+}
+h1 {
+  margin-bottom: 0.75em;
+  font-size: 2.5em;
+  border-bottom: 3px solid #333;
+  padding-bottom: 10px;
+}
+h2 {
+  margin-bottom: 0.75em;
+  color: #555;
+  font-size: 1.75em;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.section h2 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.info-item {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+.info-item span {
+  font-weight: bold;
+  color: #555;
+}
+.info-item a {
+  color: #0066cc;
+  text-decoration: none;
+}
+.info-item a:hover {
+  text-decoration: underline;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.skills-list, .companies-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li{
+    display: flex;
+    text-decoration: none;
+    justify-content: space-between;
+  }
+}
+
+.company_form{
+  display: flex;
+  flex-direction: column;
+}
+
+.company_list{
+  display: flex;
+  justify-content: space-between;
+
+}
+.company_info{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 15px;
+  & p {
+    margin-bottom: 10px;
+  }
+  & a {
+    margin-bottom: 10px;
+
+  }
+}
+
+.descript_area_company{
+  max-width: 862px;
+  min-width: 862px;
+  min-height: 46px;
+}
+
+.descript_area_user{
+  max-width: 894px;
+  min-width: 894px;
+  min-height: 46px;
+}
+.skills-list li, .companies-list li {
+  background: rgba(247, 247, 247, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 1.2em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.skills-list li:hover, .companies-list li:hover {
+  background: rgba(234, 234, 234, 0.9);
+  transform: translateY(-3px);
+}
+.skills-list li::after, .companies-list li::after {
+  color: #333;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px 30px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .info-item, .skills-list li, .companies-list li {
+    font-size: 1em;
+  }
+}

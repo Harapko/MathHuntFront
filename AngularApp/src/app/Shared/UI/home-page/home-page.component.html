@@ -1,0 +1,39 @@
+@if (this.profileService.currentUser$ | async; as user) {
+  <div class="wrapper ">
+    <img src="./assets/photo/home-page-img.png" alt="home-page-img">
+    <div class="wrapper__content"
+
+
+    >
+      @if (user.role == "hunter") {
+        <div class="wrapper__content__title">Connecting Talent <br> with Opportunity</div>
+        <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
+          <div class="wrapper__content__search-form">
+            <img class="svg" src="assets/photo/search.svg" alt="" width="40" height="40">
+            <input type="text" placeholder="Search" formControlName="skillName"
+                   (click)="isInput.set(true); this.getSkill()"
+                   (keydown.escape)="onBlur()"
+            >
+<!--                   (blur)="onBlur()"-->
+          </div>
+          <button hidden="" type="submit" class="wrapper__content__view-skills">View Skills</button>
+        </form>
+      }
+      <div>
+        @if (user.role == "hunter") {
+          @if (this.skillService.skillList$ | async; as skills) {
+            @for (skill of skills; track skill) {
+              <div class="user_list">
+                {{ skill.userName }}
+                {{ this.skillService.skillName }}
+                {{skill.proficiencyLevel}}
+                <button [routerLink]="['/profile', skill.id]" class="profile-button">Profile</button>
+              </div>
+            }
+          }
+        }
+      </div>
+    </div>
+  </div>
+}
+

@@ -1,0 +1,43 @@
+<div class="wrapper">
+
+  <div class="main">
+    <div class="title">
+      <p>Admin</p>
+      <div class="title__line"></div>
+    </div>
+    <div class="user">
+      @if (profileService.currentUser$ | async; as user){
+        <img class="user__logo" src="../../../../assets/photo/user-logo.png" alt="">
+        <div class="user__nickname">{{user.name}}</div>
+        <button (click)="authService.logout()" class="user__logout">LogOut</button>
+        <button [routerLink]="['/profile', user.id]" class="user__edit-profile">Edit Profile</button>
+      }
+    </div>
+
+
+  </div>
+
+  <div class="users">
+    <div class="users__title">Users</div>
+    <div class="users__container">
+      @if (userList$ | async; as users) {
+        @for (user of users; track user) {
+          @if (user.role === "user" || user.role === "hunter") {
+            <div [routerLink]="['/profile', user.id]" class="users__container__list">
+              <div class="users__container__list__user">{{ user.name }}</div>
+              <small>{{ user.role }}</small>
+              <div class="users__container__list__delete-skill"></div>
+              @if (!user.isLock){
+                <button style="background: green" (click)="blockUser(user.name); $event.stopPropagation()">Unlock</button>
+              } @else {
+                <button style="background: red" (click)="blockUser(user.name); $event.stopPropagation()">Lock</button>
+              }
+            </div>
+          }
+        }
+      }
+    </div>
+  </div>
+
+
+</div>

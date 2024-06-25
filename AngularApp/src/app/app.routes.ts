@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router'
-import {HomePageComponent} from "./component/home-page/home-page.component";
-import {LogInComponent} from "./component/log-in/log-in.component";
-import {RegisterComponent} from "./component/register/register.component";
-import {PageUserComponent} from "./component/page-user/page-user.component";
-import {PageHunterComponent} from "./component/page-hunter/page-hunter.component";
-import {ProfileComponent} from "./component/Profile/profile.component";
-import {PageAdminComponent} from "./component/page-admin/page-admin.component";
-import {canActivateAuth} from "./auth/access.guard";
-import {LayoutComponent} from "./component/layout/layout.component";
+import {LogInComponent} from "./auth/UI/log-in/log-in.component";
+import {RegisterComponent} from "./auth/UI/register/register.component";
+import {ProfileComponent} from "./user/UI/Profile/profile.component";
+import {canActivateAuth} from "./auth/core/access.guard";
+import {LayoutComponent} from "./Shared/UI/layout/layout.component";
+import {HomePageComponent} from "./Shared/UI/home-page/home-page.component";
+import {PageHunterComponent} from "./user/UI/page-hunter/page-hunter.component";
+import {PageUserComponent} from "./user/UI/page-user/page-user.component";
+import {PageAdminComponent} from "./user/UI/page-admin/page-admin.component";
 
 
 export const routes: Routes = [
